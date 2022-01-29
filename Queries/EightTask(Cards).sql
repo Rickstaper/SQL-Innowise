@@ -8,30 +8,30 @@ AS BEGIN
 			@cardBalanceBeforeUpdate MONEY, 
 			@cardBalanceAfterUpdate MONEY
 
-	SELECT @userBalance = (	SELECT Balance
+	SELECT @userBalance =	(SELECT Balance
 							FROM Users
-							WHERE Users.Id = (	SELECT [User_id] 
+							WHERE Users.Id =	(SELECT [User_id] 
 												FROM inserted))
 
 	SELECT @currentTotalCardsBalance = (SELECT SUM(Cards.Balance)
 										FROM Cards
-										WHERE Cards.[User_Id] = (	SELECT Id 
-																	FROM inserted)
+										WHERE Cards.[User_Id] =	(SELECT Id 
+																FROM inserted)
 										GROUP BY Cards.[User_Id])
 
-	SELECT @cardBalanceBeforeUpdate = (	SELECT Balance
+	SELECT @cardBalanceBeforeUpdate =	(SELECT Balance
 										FROM Cards
-										WHERE Cards.Id = (	SELECT Id 
+										WHERE Cards.Id =	(SELECT Id 
 															FROM inserted))
 
-	SELECT @cardBalanceAfterUpdate = (	SELECT Balance
+	SELECT @cardBalanceAfterUpdate =	(SELECT Balance
 										FROM inserted)
 
 	SELECT @resultTotalCardsBalance = @currentTotalCardsBalance - @cardBalanceBeforeUpdate + @cardBalanceAfterUpdate
 
 	UPDATE Cards
 	SET Balance = @cardBalanceAfterUpdate
-	WHERE Cards.Id = (	SELECT Id 
+	WHERE Cards.Id =	(SELECT Id 
 						FROM inserted)
 		AND @userBalance >= @resultTotalCardsBalance
 END
