@@ -2,12 +2,12 @@
 FROM Cards, Users,
 	(	SELECT Id 
 		FROM Banks
-		WHERE Bank_Name = 'Solution bank') AS SelectedBank,
+		WHERE Bank_Name = 'Fransbank') AS SelectedBank,
 
 	(	SELECT Id, Bank_id 
 		FROM Clients
-		WHERE FirstName = 'Artem'
-		AND SecondName = 'Pupkin') AS SelectedClient
+		WHERE FirstName = 'Alexandr'
+		AND SecondName = 'Svoktunovsky') AS SelectedClient
 
 WHERE Cards.Balance = 0
 	AND SelectedBank.Id = SelectedClient.Bank_id

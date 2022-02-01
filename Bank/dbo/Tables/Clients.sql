@@ -10,7 +10,8 @@
     PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [CK_Age] CHECK ([Age]>(16) AND [Age]<(120)),
     CONSTRAINT [FK_Clients_To_Bank] FOREIGN KEY ([Bank_id]) REFERENCES [dbo].[Banks] ([Id]) ON DELETE CASCADE,
-    CONSTRAINT [FK_Clients_To_Social_status] FOREIGN KEY ([Social_status_id]) REFERENCES [dbo].[Social_status] ([Id]) ON DELETE CASCADE,
-    CONSTRAINT [UQ_Social_status_id] UNIQUE NONCLUSTERED ([Social_status_id] ASC)
+    CONSTRAINT [FK_Clients_To_Social_status] FOREIGN KEY ([Social_status_id]) REFERENCES [dbo].[Social_status] ([Id]) ON DELETE CASCADE
 );
+
+
 
