@@ -48,8 +48,7 @@ CREATE TABLE Clients
 	Social_status_id INT NOT NULL,
 	CONSTRAINT CK_Age CHECK(Age > 16 AND Age < 120),
 	CONSTRAINT FK_Clients_To_Bank FOREIGN KEY(Bank_id) REFERENCES Banks(Id) ON DELETE CASCADE,
-	CONSTRAINT FK_Clients_To_Social_status FOREIGN KEY(Social_status_id) REFERENCES Social_status(Id) ON DELETE CASCADE,
-	CONSTRAINT UQ_Socual_status_id UNIQUE(Social_status_id)
+	CONSTRAINT FK_Clients_To_Social_status FOREIGN KEY(Social_status_id) REFERENCES Social_status(Id) ON DELETE CASCADE
 );
 
 GO
@@ -309,7 +308,7 @@ VALUES
 
 GO
 
-INSERT INTO Cards
+INSERT INTO Cards(Number, Balance, Pass, Special_code, Secret_word, [User_id])
 VALUES
 (
 	'3647-3726-1734-1234',
