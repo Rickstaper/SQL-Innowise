@@ -1,4 +1,4 @@
-﻿INSERT INTO Cities(Citiy_Name)
+﻿INSERT INTO Cities(City_Name)
 VALUES
 ('Minsk'),
 ('Gomel'),
