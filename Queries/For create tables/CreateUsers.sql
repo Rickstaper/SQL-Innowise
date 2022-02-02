@@ -1,8 +1,0 @@
-﻿CREATE TABLE Users
-(
-	Id INT IDENTITY PRIMARY KEY,
-	Created DATETIME NOT NULL,
-	Client_id INT NOT NULL,
-	Balance MONEY DEFAULT(0) CHECK (Balance >= 0),
-	CONSTRAINT FK_Users_To_Clients FOREIGN KEY(Client_id) REFERENCES Clients(Id) ON DELETE CASCADE
-);
