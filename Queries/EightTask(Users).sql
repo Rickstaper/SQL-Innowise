@@ -15,4 +15,9 @@ AS BEGIN
 	WHERE Users.Id = ALL(SELECT Id 
 						FROM inserted)
 		AND @changedBalance >= @totalCardsBalance
+
+	IF @@ROWCOUNT = 0
+		PRINT 'WARNING:No rows were updated';
+	ELSE
+		PRINT 'Balance was updated successfully';
 END
