@@ -15,7 +15,7 @@ AS BEGIN
 
 	SELECT @currentTotalCardsBalance = (SELECT SUM(Cards.Balance)
 										FROM Cards
-										WHERE Cards.[User_Id] =	(SELECT Id 
+										WHERE Cards.[User_Id] =	(SELECT [User_id] 
 																FROM inserted)
 										GROUP BY Cards.[User_Id])
 
